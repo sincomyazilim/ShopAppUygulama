@@ -1,0 +1,47 @@
+@model ProductListViewModel
+
+@{
+   var popularClass=Model.Products.Count>2?"popular":"";
+  
+}
+@section MessageBox
+{
+   <div class="alert alert-warning text-center m-0">
+      Bir mesajınız var
+
+   </div>
+}
+@section Categories
+{
+   @await Component.InvokeAsync("Categories")
+}
+
+   @if (Model.Products.Count==0)
+   {    
+
+            <div class="row">
+                  <div class="col-md-12">
+                        <div class="alert alert-danger">
+                           Ürün yok
+                        </div>
+                  </div> 
+            </div>
+   }
+   else
+   {
+            <div class="row">
+
+                  @foreach (var p in Model.Products)
+                  {  
+                           <div class="col-md-4">       
+                              @await Html.PartialAsync("_productCard",p) 
+                              @*burda dıkkat edılecek husu ıkıncı parametre p yanı dongu ıcınde gelen her urun gondrılıyor*@
+                           </div>
+                  }
+            
+            </div>
+   
+   }
+
+
+   

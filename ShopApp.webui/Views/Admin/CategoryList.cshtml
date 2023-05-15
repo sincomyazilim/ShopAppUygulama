@@ -1,0 +1,53 @@
+@model CategoryListViewModel
+
+
+
+<div class="row">
+    <div class="col-md-12">
+            <h1 class="h3">Admin Categories</h1>
+            <hr>
+             <a  href="/admin/categories/craete" class="btn btn-primary btn-sm" >Add Category</a>
+            <hr>
+            <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <td style="width:30px;">Id</td>
+                            <td >Name</td>
+                            <td style="width:40;">Url</td>
+                            <td style="width:150px;">İşlemler</td>
+                            
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @if (Model.Categories.Count>0)
+                        {
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <tr>
+                                        <td>@item.CategoryId</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Url</td>
+                                        
+                                        <td>
+                                        <a href="/admin/categories/@item.CategoryId" class="btn btn-primary btn-sm mr-2">Edit</a>
+                                        <form action="/admin/deletecategory" method="POST" style="display:inline;">
+                                                <input type="hidden" name="CategoryId" value="@item.CategoryId">
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        
+                                        </form>
+                                        </td>
+                                    
+                                    </tr>
+                                }
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                    <h3>Kategori Yok/No Category</h3>
+                            </div>
+                        }
+                    </tbody>
+            </table>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+
+
+      @* Kategoriler gelece *@
+            @* @await Html.PartialAsync("_categories",Model.Categories)  *@
+            @*bu kodla partial olusturabılırız alternetıf kulanımı <partial name="_header">  *@
+@section Categories
+{
+   @await Component.InvokeAsync("Categories")
+}
+
+ 
+    
+      About sayfası
+  

@@ -1,0 +1,18 @@
+@model List<Category>
+
+
+<div class="list-group">
+  <a href="/" class="list-group-item list-group-item-action">Tüm Kategoriler</a>
+  
+   @* <a asp-controller="Product" asp-action="List"  class="list-group-item list-group-item-action">Tüm Kategoriler</a> *@
+   @foreach (var item in Model)
+   {
+      @* <a href="#" class="list-group-item list-group-item-action">@category.Name</a>  *@
+      <a asp-controller="Shop"
+      asp-action="List"
+      asp-route-category="@item.Url"
+      class="list-group-item list-group-item-action @(ViewBag.SecilenId==item.Url?"active":"")">
+      @item.Name
+      </a> 
+    } 
+ </div>

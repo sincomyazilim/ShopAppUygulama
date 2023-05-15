@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    @RenderSection("Css", false)
+    <link rel="stylesheet" href="~/css/style.css">
+    <title>Shop App Uygulaması</title>
+</head>
+<body>
+   
+    
+
+ @*burda section olusturuyoruz sayfanın uzerınde msaj cıkarmak ıcın false yazdıgımız zaman kullanmak ıstemeyen sayfa kullanamz,anca ornek home/ındex sayfasında kod eklıyoruz ekledıgımzıde msaj kulllanılır*@
+    @await Html.PartialAsync("_navbar")
+    @* @await Html.PartialAsync("_header") *@
+    @* @RenderSection("Header",false) *@
+     
+     <main class="my-3">
+        <div class="container">
+            @if (TempData["Message"]!=null)
+             {    @*  mesajı burda DeserializeObject yapıyoruz tekrar *@
+               
+                <partial name="_resultMessagem" model="@(TempData.Get<AlertMessage>("message"))"/>
+            
+             }
+             @RenderBody()
+                       
+        </div>
+        </main>
+        <footer class="py-5 bg-dark text-white text-center">
+            Shop uygulası | 2020
+        </footer>
+
+         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+         @RenderSection("Scripts",false)
+
+
+
+
+
+</body>
+</html>

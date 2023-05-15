@@ -1,0 +1,31 @@
+@model Product
+<form  method="Post">
+   
+        
+    <input type="hidden" name="ProductId" value="@Model.ProductId" class="form-control">
+   
+    <div class="form-group">
+        <label for="Name">Adı</label>
+        <input asp-for="Name" value="@Model.Name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="Price">Fiyat</label>
+        <input asp-for="Price" value="@Model.Price" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="Description">Açıklama</label>
+        <textarea  asp-for="Description" value="@Model.Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="ImageUrl">Resim</label>
+        <input asp-for="ImageUrl" value="@Model.ImageUrl" class="form-control">
+    </div>
+    @* <div class="form-group">
+        <label for="CategoryId">Kategori</label>
+        <select asp-for="CategoryId" asp-items="@ViewBag.Kategoriler" value="@Model.CategoryId" class="form-control">
+            <option selected disabled>Seçiniz</option>
+            
+        </select>
+    </div> *@
+    <button type="submit" class="btn btn-primary" >Gönder</button>
+</form> 
